@@ -1,6 +1,6 @@
 #pragma once
 
-#define UNDEFINED	-11111
+#define UNDEFINED		-11111
 
 struct Point {
 	float x;
