@@ -31,7 +31,7 @@ void printBinary(unsigned long l, int w)
 }
 */
 
-void sumBad()
+void sumBad() //bad way
 {
 	float sum = 1000.0;
 	printf("\nBad summation for 1000.0 + 10000 * 0.0001");
@@ -40,7 +40,7 @@ void sumBad()
 	printf("\nSum is = %f", sum);
 }
 
-void sumGroup()
+void sumGroup() //better way
 {
 	float sum = 1000.0;
 	float group = 0.0;
@@ -51,11 +51,22 @@ void sumGroup()
 	printf("\nSum is = %f", sum);
 }
 
+void sumDouble() //best way
+{
+	double sum = 1000.0;
+	printf("\nDouble precision summation for 1000.0 + 10000 * 0.0001");
+	for (int i = 0; i < 10000; i++)
+		sum += 0.0001f;
+	printf("\nSum is = %1f", sum);
+}
+
 int main()
 {
-	sumBad();
+	sumBad();	//bad way
 	cout << endl;
-	sumGroup();
+	sumGroup();	//better way
+	cout << endl;
+	sumDouble();	//best way
 	system("pause");
 	return 0;
 }
