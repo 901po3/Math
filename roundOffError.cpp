@@ -1,6 +1,7 @@
 #include<iostream>
 using namespace std;
 
+/*
 unsigned long bits(unsigned long x, int k, int j)
 {
 	unsigned long zero = 0;
@@ -28,6 +29,7 @@ void printBinary(unsigned long l, int w)
 	}
 	printf(" ");
 }
+*/
 
 void sumBad()
 {
