@@ -1,7 +1,6 @@
 #pragma once
 
 //Representation of Polynomail
-#define MAX_TERM	256
 
 struct polynomialNode
 {
