@@ -182,6 +182,58 @@ double polynomial::evaluateMathHorner(node *a, double x)
 	return result * pow(x, order);
 }
 
+double polynomial::combi(double a[][2], int n, int r)
+{// multiply all polynomials that picked number of r from n;
+	double result = 1;
+	if (n <= 0 || r < 0 || n < r) return 0;
+	if (n == r)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			result *= a[i][0];
+		}
+		return result;
+	}
+	if (r == 0)
+		return 1;
+	else
+		return a[n-1][0] * combi(a, n-1, r-1) + combi(a, n-1, r);
+}
+
+node *polynomial::lagrange(double a[][2], int n)
+{
+	int sign; //take care of sign + -
+	double coef, temp;
+	node *pResult;
+	pResult = makeNode(NULL, NULL);
+	for (int i = 0; i < n; i++)
+	{
+		if (!a[i][1]) continue;
+		coef = a[i][1];
+		for (int j = 0; j < n; j++)
+		{
+			if (j == i) continue;
+			if (a[i][0] == a[j][0])
+			{
+				//if there are two different polynomials that has same coordinate, we can't get
+				//lagrange polynomial
+				return NULL;
+			}
+			coef /= a[i][0] - a[j][0];
+		}
+		temp = a[i][0];
+		a[i][0] = 0;
+		for (int j = 0; j < n; j++)
+		{
+			if (j % 2) sign = -1;
+			else sign = 1;
+			insertNode(pResult, n - j - 1, sign * coef * combi(a, n, j));
+		}
+		a[i][0] = temp;
+	}
+	return pResult;
+}
+
 void polynomial::deleteAll()
 {
 	node *pCur, *pPrev;
