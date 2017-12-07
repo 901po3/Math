@@ -44,6 +44,9 @@ public:
 	//insert number into variable x and solve the polynomial;
 	double evaluateMath(node *a, double x); //O(n ^ 2);
 	double evaluateMathHorner(node *a, double x); // O(n) Horner's law;
+	
+	double combi(double a[][2], int n, int r);//Largrange store law
+	node *lagrange(double a[][2], int n);//a[i][0] : xi a[i][1] : yi
 
 	void deleteAll();
 };
